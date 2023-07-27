@@ -4,18 +4,12 @@
 	"description": "ndarray-pixels",
 	"type": "module",
 	"sideEffects": false,
-	"types": "./dist/index.d.ts",
-	"main": "./dist/ndarray-pixels-node.cjs",
-	"module": "./dist/ndarray-pixels-browser.modern.js",
+	"main": "./src/index.js",
+	"module": "./src/index.js",
 	"exports": {
-		"types": "./dist/index.d.ts",
-		"node": {
-			"require": "./dist/ndarray-pixels-node.cjs",
-			"default": "./dist/ndarray-pixels-node.modern.js"
-		},
 		"default": {
-			"require": "./dist/ndarray-pixels-browser.cjs",
-			"default": "./dist/ndarray-pixels-browser.modern.js"
+			"require": "./src/index.js",
+			"default": "./src/index.js"
 		}
 	},
 	"repository": "github:donmccurdy/ndarray-pixels",

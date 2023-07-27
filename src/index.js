@@ -1,6 +1,5 @@
-import type { NdArray } from 'ndarray';
-import { getPixelsInternal } from './node-get-pixels';
-import { savePixelsInternal } from './node-save-pixels';
+import { getPixelsInternal } from './browser-get-pixels.js';
+import { savePixelsInternal } from './browser-save-pixels.js';
 
 /**
  * Decodes image data to an `ndarray`.
@@ -14,7 +13,7 @@ import { savePixelsInternal } from './node-save-pixels';
  * @param mimeType `image/jpeg`, `image/png`, etc.
  * @returns
  */
-async function getPixels(data: Uint8Array, mimeType: string): Promise<NdArray<Uint8Array>> {
+async function getPixels(data, mimeType) {
 	return getPixelsInternal(data, mimeType);
 }
 
@@ -32,10 +31,7 @@ async function getPixels(data: Uint8Array, mimeType: string): Promise<NdArray<Ui
  * @param mimeType `image/jpeg`, `image/png`, etc.
  * @returns
  */
-async function savePixels(
-	pixels: NdArray<Uint8Array | Uint8ClampedArray>,
-	mimeType: string
-): Promise<Uint8Array> {
+async function savePixels(pixels, mimeType ) {
 	return savePixelsInternal(pixels, mimeType);
 }
 

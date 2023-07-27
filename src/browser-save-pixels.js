@@ -1,30 +1,13 @@
-import type { NdArray } from 'ndarray';
 import { putPixelData } from './common';
 
-export interface EncoderOptions {
-	quality?: number;
-}
 
-export async function savePixelsInternal(
-	pixels: NdArray<Uint8Array | Uint8ClampedArray>,
-	mimeType: string
-): Promise<Uint8Array>;
-export async function savePixelsInternal(
-	pixels: NdArray<Uint8Array | Uint8ClampedArray>,
-	mimeType: string,
-	options?: EncoderOptions
-): Promise<Uint8Array>;
-export async function savePixelsInternal(
-	pixels: NdArray<Uint8Array | Uint8ClampedArray>,
-	mimeType: string,
-	options: EncoderOptions = {}
-): Promise<Uint8Array> {
+export async function savePixelsInternal(pixels, mimeType, options = {}) {
 	// Create HTMLCanvasElement and write pixel data.
 	const canvas = document.createElement('canvas');
 	canvas.width = pixels.shape[0];
 	canvas.height = pixels.shape[1];
 
-	const context = canvas.getContext('2d')!;
+	const context = canvas.getContext('2d');
 	const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
 	putPixelData(pixels, imageData.data);
@@ -42,11 +25,7 @@ export async function savePixelsInternal(
 }
 
 /** Creates readable stream from given HTMLCanvasElement and options. */
-function streamCanvas(
-	canvas: HTMLCanvasElement,
-	mimeType: string,
-	quality?: number
-): Promise<Uint8Array> {
+function streamCanvas(canvas, mimeType, quality) {
 	return new Promise<Uint8Array>((resolve, reject) => {
 		canvas.toBlob(
 			async (blob) => {

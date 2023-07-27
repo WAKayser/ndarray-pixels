@@ -1,11 +1,7 @@
 import ndarray, { NdArray } from 'ndarray';
 import ops from 'ndarray-ops';
 
-export function putPixelData(
-	array: NdArray<Uint8Array | Uint8ClampedArray>,
-	data: Uint8Array | Uint8ClampedArray,
-	frame = -1
-): Uint8Array | Uint8ClampedArray {
+export function putPixelData(array, data, frame = -1){
 	if (array.shape.length === 4) {
 		return putPixelData(array.pick(frame), data, 0);
 	} else if (array.shape.length === 3) {
