@@ -37,8 +37,7 @@
 	"dependencies": {
 		"@types/ndarray": "^1.0.11",
 		"ndarray": "^1.0.19",
-		"ndarray-ops": "^1.2.2",
-		"sharp": "^0.32.1"
+		"ndarray-ops": "github:archmoj/ndarray-ops#no-new-fn"
 	},
 	"devDependencies": {
 		"@types/ndarray-ops": "1.2.4",
@@ -57,7 +56,8 @@
 		"tape-run": "10.0.0",
 		"typedoc": "0.24.8",
 		"typedoc-plugin-markdown": "3.15.3",
-		"typescript": "5.1.6"
+		"typescript": "5.1.6",
+		"sharp": "^0.32.1"
 	},
 	"files": [
 		"dist/",
